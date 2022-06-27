@@ -87,11 +87,13 @@ class ChildController extends BaseController
     {
         $id=Auth::guard('api-fathers')->id();
         $father=Father::find($id);
-        $child=Child::get()->find($id);
+        // $child=Child::get()->find($id);
+        $child=Child::where('father_id',$id)->first();
+        // dd($child);
 
-        // if($id!==$child->father_id){
-        // return $this->sendError('please validate errors',"you are not authorized to do this action");
-        // }
+        if($id !== $child->father_id){
+        return $this->sendError('please validate errors',"you are not authorized to do this action");
+        }
         $input=$request->all();
         $validator=Validator::make($input,[
             'name'=>'required',
