@@ -141,11 +141,11 @@ public function update(Request $request, Father $father)
     {
         $School = School::first();
         // $School->children()->delete();
-
-        $children=Child::where('father_id',$father->id)->get();
-
-        $children->delete();
-        
+        // $father = Father::find($father->id);
+        // $children=Child::where('father_id',$id)->get();
+        // if(count($children)>0){
+        //   $children->delete();
+        // }
         $father->delete();
         return redirect()->route("father.index")->with('success','father deleted successfuly');
     }
