@@ -83,12 +83,14 @@ class ChildController extends BaseController
     }
 
 
-    public function update(Request $request,$id)
+    public function update(Request $request,$cid)
     {
         $id=Auth::guard('api-fathers')->id();
         $father=Father::find($id);
-        // $child=Child::get()->find($id);
-        $child=Child::where('father_id',$id)->first();
+        $child=Child::get()->find($cid);
+        // $childs=Child::where('father_id',$id)->get();
+        // dd($childs);
+        // $child = $childs->where('id',$id)->first();
         // dd($child);
 
         if($id !== $child->father_id){
