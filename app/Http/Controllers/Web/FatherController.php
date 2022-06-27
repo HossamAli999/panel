@@ -143,9 +143,9 @@ public function update(Request $request, Father $father)
         // $School->children()->delete();
 
         $children=Child::where('father_id',$father->id)->get();
-        if(count($children)>0){
-          $children->delete();
-        }
+
+        $children->delete();
+        
         $father->delete();
         return redirect()->route("father.index")->with('success','father deleted successfuly');
     }
