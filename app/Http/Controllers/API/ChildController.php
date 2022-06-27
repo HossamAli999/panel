@@ -89,9 +89,9 @@ class ChildController extends BaseController
         $father=Father::find($id);
         $child=Child::get()->find($id);
 
-        if($id!==$child->father_id){
-        return $this->sendError('please validate errors',"you are not authorized to do this action");
-        }
+        // if($id!==$child->father_id){
+        // return $this->sendError('please validate errors',"you are not authorized to do this action");
+        // }
         $input=$request->all();
         $validator=Validator::make($input,[
             'name'=>'required',
